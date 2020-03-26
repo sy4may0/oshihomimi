@@ -32,17 +32,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/user', userRouter);
-app.use('/task', taskRouter);
-
 // cors.
 if(process.env.CORS_ORIGIN !== undefined) {
   const cors_opts = {
     origin: process.env.CORS_ORIGIN
   };
   app.use(cors(cors_opts));
+} else {
+  app.use(cors());
 }
+
+app.use('/', indexRouter);
+app.use('/user', userRouter);
+app.use('/task', taskRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
