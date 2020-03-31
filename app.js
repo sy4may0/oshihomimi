@@ -11,6 +11,8 @@ import cors from 'cors'
 import indexRouter from './routes/index';
 import userRouter from './routes/user';
 import taskRouter from './routes/task'; 
+import achievementRouter from './routes/achievement'; 
+import excelRouter from './routes/excel'; 
 
 const app = express();
 const mongodb_uri = process.env.MONGODB_URI ?
@@ -20,6 +22,7 @@ const mongodb_uri = process.env.MONGODB_URI ?
 mongoose.connect(mongodb_uri + '/oshihomimi', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 // view engine setup
@@ -45,6 +48,8 @@ if(process.env.CORS_ORIGIN !== undefined) {
 app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/task', taskRouter);
+app.use('/achievement', achievementRouter);
+app.use('/excel', excelRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -54,6 +59,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  console.log(err);
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

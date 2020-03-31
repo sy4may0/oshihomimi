@@ -4,9 +4,9 @@ import Task from '../models/task'
 const router = Router();
 
 router.get('/', async (req, res) => {
-    const filter={}
-    if (req.params.user !== undefined) {
-        filter = { user: req.params.user } 
+    let filter={}
+    if (req.query.user !== undefined) {
+        filter = { user: req.query.user } 
     }
     const tasks = await Task.find(filter);
     res.json(tasks);
