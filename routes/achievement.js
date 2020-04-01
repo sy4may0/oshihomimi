@@ -18,6 +18,7 @@ router.get('/:id', async (req, res) => {
     res.json(achievement)
 });
 
+// 日時を配列とすることで複数追加を想定する。
 // すでに同一のAchievementが存在する場合、それを更新する。ない場合は新規追加する。 
 router.post('/', async(req, res) => {
     const results = [];
@@ -51,12 +52,9 @@ router.post('/', async(req, res) => {
         newAchievement.closed = req.body.closed;
         newAchievement.issues = req.body.issues;
 
-
         newAchievements.push(newAchievement)
     }
 
-    console.log(achievements)
-    console.log(newAchievements)
     // 重複排除
     // 日時が同じのAchievementがある場合は、idをそのままにする。
     for (let newAchievement of newAchievements) {
@@ -78,24 +76,25 @@ router.post('/', async(req, res) => {
     res.json({result: "success"});
 });
 
-//router.post('/:id', async(req, res) => {
-//    const id = req.params.id;
-//    const newAchievement = await Achievement.findById(id);
-//    newAchievement.date = date 
-//    newAchievement.user = req.body.user
-//    newAchievement.unexpected = req.body.unexpected
-//    newAchievement.project = req.body.project
-//    newAchievement.category = req.body.category
-//    newAchievement.description = req.body.description
-//    newAchievement.scheduled = req.body.scheduled
-//    newAchievement.actual = req.body.actual
-//    newAchievement.closed = req.body.closed
-//    newAchievement.issues = req.body.issues
-//
-//    await newAchievement.save();
-//
-//    res.json({result: "success"});
-//});
+router.post('/:id', async(req, res) => {
+    const id = req.params.id;
+    const newAchievement = await Achievement.findById(id);
+    newAchievement.date = req.body.date 
+    newAchievement.user = req.body.user
+    newAchievement.unexpected = req.body.unexpected
+    newAchievement.project = req.body.project
+    newAchievement.category = req.body.category
+    newAchievement.description = req.body.description
+    newAchievement.scheduled = req.body.scheduled
+    newAchievement.actual = req.body.actual
+    newAchievement.closed = req.body.closed
+    newAchievement.issues = req.body.issues
+    console.log(newAchievement)
+
+    await newAchievement.save();
+
+    res.json({result: "success"});
+});
 
 router.delete('/:id', async(req, res) => {
     await Achievement.remove({

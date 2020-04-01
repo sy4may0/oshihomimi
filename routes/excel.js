@@ -4,9 +4,12 @@ import axios from 'axios';
 
 const router = Router();
 
-// [TODO]要修正。ハードコード。
+EXCELAPI = process.env.EXCELAPI_URL ?
+           process.env.EXCELAPI_URL :
+           "http://localhost:5000";
+
 const request = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: EXCELAPI,
   headers: {
     'Content-Type': 'application/json',
 },
@@ -25,11 +28,11 @@ router.get('/', async (req, res) => {
         filter.date.$lte = req.query.lte;
     }
     const achievements = await Achievement.find(filter);
-    request.post('/', {
+    const result = await request.post('/', {
         user: req.query.user,
         achievements: achievements
     })
-    res.json({result: "success"});
+    res.json(result.data);
 });
 
 export default router;

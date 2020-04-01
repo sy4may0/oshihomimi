@@ -9,10 +9,12 @@ import mongoose from 'mongoose';
 import cors from 'cors'
 
 import indexRouter from './routes/index';
-import userRouter from './routes/user';
+import confRouter from './routes/conf';
 import taskRouter from './routes/task'; 
 import achievementRouter from './routes/achievement'; 
 import excelRouter from './routes/excel'; 
+
+import User from './models/user'
 
 const app = express();
 const mongodb_uri = process.env.MONGODB_URI ?
@@ -45,8 +47,9 @@ if(process.env.CORS_ORIGIN !== undefined) {
   app.use(cors());
 }
 
+
 app.use('/', indexRouter);
-app.use('/user', userRouter);
+app.use('/conf', confRouter);
 app.use('/task', taskRouter);
 app.use('/achievement', achievementRouter);
 app.use('/excel', excelRouter);
@@ -67,6 +70,17 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Synchronize user in mongodb.
+const conf = require('./conf.json');
+for(let user of conf.users) {
+  const newUser = User();
+  newUser.name = user.value;
+  newUser.text = user.text;
+  User.findOneAndUpdate({name: newUser.name}, newUser, {upsert: true}, function() {
+    console.log('User ' + newUser.name + ' Configured.');
+  })
+}
 
 // set tcp port.
 const port = normalizePort(process.env.PORT || '3000');

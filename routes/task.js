@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     if (req.query.user !== undefined) {
         filter = { user: req.query.user } 
     }
+    
     const tasks = await Task.find(filter);
     res.json(tasks);
 });
@@ -22,7 +23,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async(req, res) => {
     const newTask = new Task();
     newTask.name = req.body.name;
-    newTask.user = req.body.uesr;
+    newTask.user = req.body.user;
     newTask.project = req.body.project;
     newTask.category = req.body.category;
     newTask.description = req.body.description;
@@ -34,6 +35,7 @@ router.post('/', async(req, res) => {
 
 router.post('/:id', async(req, res) => {
     const id = req.params.id;
+    console.log(req.body);
     const newTask = await Task.findById(id);
     newTask.name = req.body.name;
     newTask.user = req.body.uesr;
