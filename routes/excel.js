@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const router = Router();
 
-EXCELAPI = process.env.EXCELAPI_URL ?
+const EXCELAPI = process.env.EXCELAPI_URL ?
            process.env.EXCELAPI_URL :
            "http://localhost:5000";
 
