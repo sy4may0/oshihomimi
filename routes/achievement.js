@@ -4,9 +4,15 @@ import Achievement from '../models/achievement'
 const router = Router();
 
 router.get('/', async (req, res) => {
-    let filter={}
+    let filter={'date': {}}
     if (req.query.user !== undefined) {
-        filter = { user: req.query.user } 
+        filter.user = req.query.user; 
+    }
+    if (req.query.gte !== undefined) {
+        filter.date.$gte = req.query.gte;
+    }
+    if (req.query.lte !== undefined) {
+        filter.date.$lte = req.query.lte;
     }
     const achievements = await Achievement.find(filter);
     res.json(achievements);
