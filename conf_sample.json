@@ -1,7 +1,7 @@
 {
   "users": [
-    { "text": "唐澤　貴洋", "value": "t_karasawa" }
-    { "text": "長谷川　亮太", "value": "r_hasegawa" }
+    { "text": "唐澤　貴洋", "value": "t_karasawa" },
+    { "text": "長谷川　亮太", "value": "r_hasegawa" },
     { "text": "森園 祐一", "value": "y_morizono" }
   ],
   "projects": [

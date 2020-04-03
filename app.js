@@ -22,12 +22,21 @@ const app = express();
 const mongodb_uri = process.env.MONGODB_URI ?
                     process.env.MONGODB_URI :
                     "mongodb://localhost:27017";
-
-mongoose.connect(mongodb_uri + '/oshihomimi', {
+const mongodb_opts = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-});
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 500,
+  connectTimeoutMS: 10000,
+};
+
+mongoose.connect(mongodb_uri + '/oshihomimi', mongodb_opts)
+  .then(()=> {
+    console.log("MongoDB Connected.");
+  }).catch((err)=> {
+    console.log(err);
+  });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
