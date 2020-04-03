@@ -19,15 +19,14 @@ import User from './models/user'
 
 dotenv.config()
 const app = express();
-const mongodb_uri = process.env.MONGODB_URI ?
-                    process.env.MONGODB_URI :
+const mongodb_uri = process.env.MONGO_URI ?
+                    process.env.MONGO_URI :
                     "mongodb://localhost:27017";
+console.log(mongodb_uri)
 const mongodb_opts = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-  reconnectTries: Number.MAX_VALUE,
-  reconnectInterval: 500,
   connectTimeoutMS: 10000,
 };
 
