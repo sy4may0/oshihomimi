@@ -7,6 +7,7 @@ import http from 'http';
 import debug from 'debug';
 import mongoose from 'mongoose';
 import cors from 'cors'
+import dotenv from 'dotenv'
 
 import indexRouter from './routes/index';
 import confRouter from './routes/conf';
@@ -16,6 +17,7 @@ import excelRouter from './routes/excel';
 
 import User from './models/user'
 
+dotenv.config()
 const app = express();
 const mongodb_uri = process.env.MONGODB_URI ?
                     process.env.MONGODB_URI :

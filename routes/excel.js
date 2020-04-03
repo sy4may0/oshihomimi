@@ -1,7 +1,9 @@
 import Router from 'express-promise-router';
 import Achievement from '../models/achievement';
 import axios from 'axios';
+import dotenv from 'dotenv'
 
+dotenv.config()
 const router = Router();
 
 const EXCELAPI = process.env.EXCELAPI_URL ?
