@@ -38,7 +38,7 @@ router.post('/:id', async(req, res) => {
     console.log(req.body);
     const newTask = await Task.findById(id);
     newTask.name = req.body.name;
-    newTask.user = req.body.uesr;
+    newTask.user = req.body.user;
     newTask.project = req.body.project;
     newTask.category = req.body.category;
     newTask.description = req.body.description;
