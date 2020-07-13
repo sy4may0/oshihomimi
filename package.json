@@ -8,30 +8,30 @@
     "lint": "./node_modules/.bin/eslint ."
   },
   "dependencies": {
-    "@babel/runtime": "^7.8.7",
+    "@babel/runtime": "^7.10.4",
     "axios": "^0.19.2",
-    "cookie-parser": "~1.4.4",
+    "cookie-parser": "~1.4.5",
     "cors": "^2.8.5",
     "debug": "~4.1.1",
     "dotenv": "^8.2.0",
     "express": "~4.17.1",
-    "express-promise-router": "^3.0.3",
-    "http-errors": "~1.7.3",
-    "mongoose": "^5.9.4",
-    "morgan": "~1.9.1",
-    "pug": "^2.0.4"
+    "express-promise-router": "^4.0.1",
+    "http-errors": "~1.8.0",
+    "mongoose": "^5.9.23",
+    "morgan": "~1.10.0",
+    "pug": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.7",
-    "@babel/node": "^7.8.7",
-    "@babel/plugin-transform-runtime": "^7.8.3",
-    "@babel/preset-env": "^7.8.7",
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/node": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.0.6",
-    "eslint": "^6.8.0",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-node-externals": "^1.7.2"
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.4.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.0"
   }
 }
