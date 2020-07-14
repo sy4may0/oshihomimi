@@ -1,8 +1,23 @@
 {
   "users": [
-    { "text": "唐澤　貴洋", "value": "t_karasawa" },
-    { "text": "長谷川　亮太", "value": "r_hasegawa" },
-    { "text": "森園 祐一", "value": "y_morizono" }
+    { "text": "唐澤　貴洋", 
+      "value": {
+        "name": "t_karasawa", 
+        "excel": "Korosu.xlsx"
+      }
+    },
+    { "text": "長谷川　亮太", 
+      "value": {
+        "name": "r_hasegawa", 
+        "excel": "chinkoface.xlsx"
+      }
+    },
+    { "text": "森園　祐一", 
+      "value": {
+        "name": "y_morizono", 
+        "excel": "hikari.xlsx"
+      }
+    }
   ],
   "projects": [
     "Twitter路線",
