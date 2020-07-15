@@ -32,6 +32,7 @@ router.get('/', async (req, res) => {
     const achievements = await Achievement.find(filter);
     const result = await request.post('/', {
         user: req.query.user,
+        filename: req.query.filename,
         achievements: achievements
     })
     res.json(result.data);
